@@ -11,6 +11,10 @@ public class loginPage {
     By login_loginBtn = By.xpath("//input[@type='submit']");
     By login_logoutBtn = By.linkText("Logout");
     By login_invalidMessage = By.xpath("//div[contains(text(),'Warning')]");
+    By login_forgetPassword = By.linkText("Forgotten Password");
+    By login_forgetEmail = By.xpath("//input[@id='input-email']");
+    By login_forgetConfirmationAlert = By.cssSelector("div.alert.alert-success.alert-dismissible");
+    By login_forgetEmail_continueBtn = By.cssSelector("input[value='Continue']");
 
     //Constructor for Webdriver
     public loginPage(WebDriver driver)
@@ -42,6 +46,22 @@ public class loginPage {
     {
         return driver.findElement(login_invalidMessage).isDisplayed();
 
+    }
+    public void forget_Password_click()
+    {
+        driver.findElement(login_forgetPassword).click();
+    }
+    public WebElement enter_emailOfForgottenPassword()
+    {
+        return driver.findElement(login_forgetEmail);
+    }
+    public boolean confirmationMessage_forgetPassword()
+    {
+        return driver.findElement(login_forgetConfirmationAlert).isDisplayed();
+    }
+    public void click_ContinueBtn_ConfirmationLink()
+    {
+        driver.findElement(login_forgetEmail_continueBtn).click();
     }
 }
 

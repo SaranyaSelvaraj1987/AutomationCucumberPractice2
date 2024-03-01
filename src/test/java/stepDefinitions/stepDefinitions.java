@@ -59,6 +59,20 @@ public class stepDefinitions extends baseTests {
     //Assert.assertEquals(lp.invalid_login_verification(),true);
     Assert.assertEquals(true, lp.invalid_login_verification());
     }
+    @When("I click on forget password link")
+    public void i_click_on_forget_password_link() {
+    lp.forget_Password_click();
+    }
+    @When("I enter the {string} to continue")
+    public void i_enter_the_to_continue(String emailId) {
+    lp.enter_emailOfForgottenPassword().sendKeys(emailId);
+    lp.click_ContinueBtn_ConfirmationLink();
+    }
+    @Then("I should be able to see the comfirmation message for sending the link")
+    public void i_should_be_able_to_see_the_comfirmation_message_for_sending_the_link() {
+    Assert.assertEquals(true, lp.confirmationMessage_forgetPassword());
+    }
+
 
 
 
